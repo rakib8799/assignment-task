@@ -48,8 +48,19 @@ const UserContextProvider = ({ children }) => {
     }, []);
 
     useEffect(() => {
+        const storedState = localStorage.getItem('singleUserData');
+        if (storedState) {
+            setSingleUserData(JSON.parse(storedState));
+        }
+    }, []);
+
+    useEffect(() => {
         localStorage.setItem('usersData', JSON.stringify(singleValue));
     }, [singleValue]);
+
+    useEffect(() => {
+        localStorage.setItem('singleUserData', JSON.stringify(singleUserData));
+    }, [singleUserData]);
 
     const addAPIUser = async (formData) => {
         try {
@@ -64,7 +75,7 @@ const UserContextProvider = ({ children }) => {
     }
 
     return (
-        <UserContext.Provider value={{ loading, setLoading, error, setError, filteredUsers, setFilteredUsers, apiUsers, fetchSingleUser, addAPIUser, singleUserData }}>
+        <UserContext.Provider value={{ loading, setLoading, error, setError, filteredUsers, setFilteredUsers, apiUsers, fetchSingleUser, addAPIUser, singleUserData, setSingleUserData }}>
             {children}
         </UserContext.Provider>
     )
