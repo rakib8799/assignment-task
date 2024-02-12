@@ -28,4 +28,3 @@ The task is to use the [Dummy JSON's Users API](https://dummyjson.com/users) end
 5. Add a form in the user list page where I can add users with all the information mentioned above.
 
 - Solution:
-# assignment-task
